@@ -1,0 +1,16 @@
+[workspace]
+resolver = "2"
+members = [
+    'flatdecode/host',
+    'simple-pdf-decrypt',
+    'simple-pdf-parser'
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+
+[profile.bench]
+lto = true
+
