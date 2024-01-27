@@ -11,7 +11,7 @@ impl Pdf {
             find_startxref_head -= 1;
         }
 
-        let xref_offset = str::parse::<u32>(
+        let xref_offset = str::parse::<usize>(
             &String::from_utf8(self.data[find_startxref_head + 1..len - 7].to_vec()).unwrap(),
         )
         .unwrap();
@@ -61,8 +61,42 @@ impl Pdf {
                 .unwrap(),
         )
         .unwrap();
+
+        let mut find_id_head = find_trailer_begin + 2;
+        while self.data[find_id_head] != 0x2F
+            || self.data[find_id_head + 1] != 0x49
+            || self.data[find_id_head + 2] != 0x44
+            || self.data[find_id_head + 3] != 0x20
+            || self.data[find_id_head + 4] != 0x5B
+            || ((self.data[find_id_head + 5] != 0x20 || self.data[find_id_head + 6] != 0x3C)
+                && self.data[find_id_head + 5] != 0x3C)
+        {
+            find_id_head += 1;
+        }
+
+        if self.data[find_id_head + 5] == 0x3C {
+            find_id_head += 6;
+        } else {
+            find_id_head += 7;
+        }
+        let mut find_id_end = find_id_head;
+        while self.data[find_id_end] != 0x3E
+            || self.data[find_id_end + 1] != 0x20
+            || self.data[find_id_end + 2] != 0x3C
+        {
+            find_id_end += 1;
+        }
+
+        let mut document_id = Vec::new();
+        document_id.extend_from_slice(&self.data[find_id_head..find_id_end]);
+        assert_eq!(
+            self.data[find_id_end + 3..find_id_end + 3 + document_id.len()],
+            *document_id.as_slice()
+        );
+
         self.trailer = Some(Trailer {
             encrypt_obj_id,
+            document_id,
             xref_offset,
         });
     }
@@ -78,6 +112,10 @@ mod test {
         let mut pdf = Pdf::new(PDF_FILE);
         pdf.parse_trailer();
         assert_eq!(pdf.trailer.as_ref().unwrap().encrypt_obj_id, 16);
+        assert_eq!(
+            pdf.trailer.as_ref().unwrap().document_id,
+            (*b"3235663230333732663332343562303364373435323136306466313963313738").to_vec()
+        );
         assert_eq!(pdf.trailer.as_ref().unwrap().xref_offset, 4719);
     }
 }

@@ -1,0 +1,14 @@
+[package]
+name = "method"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+
+[dependencies]
+risc0-zkvm = { version = "=0.20.0-rc.4", default-features = false, features = [ "std" ] }
+serde = { version = "1.0", features = ["derive"] }
+simple-pdf-parser = { path = "../../../simple-pdf-parser" }
+simple-pdf-decrypt = { path = "../../../simple-pdf-decrypt" }
+libflate = "2.0.0"
+ahash = "=0.8.6"

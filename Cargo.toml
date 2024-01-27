@@ -1,7 +1,9 @@
 [workspace]
 resolver = "2"
 members = [
-    'flatdecode/host',
+    "irs",
+    "irs0/host",
+    "irs0/methods",
     'simple-pdf-decrypt',
     'simple-pdf-parser'
 ]

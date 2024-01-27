@@ -1,12 +1,14 @@
-use crate::structs::Trailer;
+use crate::structs::{EncryptObj, EncryptXrefEntry, Trailer};
 
 mod parser;
-mod structs;
+pub mod structs;
 
 #[derive(Default, Clone)]
 pub struct Pdf {
     pub data: Vec<u8>,
     pub trailer: Option<Trailer>,
+    pub encrypt_xref_entry: Option<EncryptXrefEntry>,
+    pub encrypt_obj: Option<EncryptObj>,
 }
 
 impl Pdf {
@@ -20,5 +22,5 @@ impl Pdf {
 
 #[cfg(test)]
 mod test {
-    pub(crate) static PDF_FILE: &[u8] = include_bytes!("../../post-enc.pdf");
+    pub static PDF_FILE: &[u8] = include_bytes!("../../samples/encrypted-pdf-sample.pdf");
 }
