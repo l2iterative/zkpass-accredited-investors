@@ -183,7 +183,7 @@ Proof generation on my Mac Studio (with M2 Ultra chip) takes about 13s.
 
 To run the code in `irs/` or `irs0/` folder, an IRS account transcript is needed. The one we used for internal testing is the author's real 2022 IRS tax transcript, and he is reluctant to include it in the public GitHub 
 repository. US residents should find little difficulty in obtaining an IRS account transcript from [the online account](https://www.irs.gov/individuals/get-transcript). If you sincerely need one for testing but could not 
-get a version, please reach out to me through weikeng.chen@l2iterative.com.
+get a version, please reach out to the author through weikeng.chen@l2iterative.com. 
 
 ### Future work
 Future optimization over PDF proofs is very plausible. In fact, part of the proof generation can be delegated, by having 
