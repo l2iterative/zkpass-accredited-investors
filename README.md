@@ -100,7 +100,7 @@ not suffer from this limitation.
 IZK and RISC Zero, however, are close competitors. 
 - IZK for arithmetic circuits, such as for ZKML, are fairly efficient. As long as the circuit is not enormously large,
 IZK is a clear winner to RISC Zero.
-- IZK for RISC-V is still in its infancy. An academic prototype of [RISC-V IZK](https://eprint.iacr.org/2021/979) is present in ACM CCS 2021,
+- IZK for RISC-V is still in its infancy. An academic prototype of [RISC-V IZK](https://eprint.iacr.org/2021/979) is presented in ACM CCS 2021,
 offering a clock rate of 6.6 kHz with 100 Mbps network. RISC Zero, with hardware 
 acceleration, can do 91.2 kHz, but without any hardware acceleration it has only 12.8 kHz. The comparison is not yet 
 apples-to-apples, as IZK is likely communication-bounded while RISC Zero is computation-bounded. 
