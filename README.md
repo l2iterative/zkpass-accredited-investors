@@ -24,7 +24,7 @@ This can be illustrated with the following diagram.
 flowchart LR
   A[Login to IRS] --> B{zkPass<br/>3P-TLS<br/>protocol}
   B --> C[Retrieve source-authenticated<br/>account transcripts]
-  C --> D{zkPass<br/>document notary<br/>protocol}
+  C --> D{zkPass<br/>data processing<br/>protocol}
   D --> E[Proof of the income data in<br/>the account transcripts]
 ```
 
