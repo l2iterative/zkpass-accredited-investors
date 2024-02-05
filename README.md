@@ -35,7 +35,7 @@ with privacy and integrity guarantees.
 
 - **Data-feed:** 
   * HTTPS web connections (with [3P-TLS](https://medium.com/zkpass/a-technical-overview-of-zkpass-protocol-e28303e472e9))
-  * [Passport MRZ](https://en.wikipedia.org/wiki/Machine-readable_passport)
+  * [Electronic passport](https://en.wikipedia.org/wiki/Machine-readable_passport)
   * [DKIM emails](https://github.com/zkemail)
   * [Digital signed PDFs](https://helpx.adobe.com/acrobat/using/signing-pdfs.html)
 - **Data-processing:**
